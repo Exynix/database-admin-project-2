@@ -26,11 +26,11 @@ public class ConsultaProduccionService {
     @PostConstruct
     private void init() {
         this.consultaProduccionPorAnioCall = new SimpleJdbcCall(jdbcTemplate)
-                .withCatalogName("CONSULTAS") // Name of your Oracle package
-                .withProcedureName("consultaProduccionPorAnio") // Name of your procedure
+                .withCatalogName("CONSULTAS")
+                .withProcedureName("consultaProduccionPorAnio")
                 .declareParameters(
                         // Declare input parameter for the year
-                        new SqlParameter("p_anio", Types.NUMERIC), // Oracle NUMBER maps to JDBC NUMERIC
+                        new SqlParameter("p_anio", Types.NUMERIC),
 
                         new SqlOutParameter("p_registros", Types.REF_CURSOR, new ProduccionDataRowMapper())
                 );
@@ -52,7 +52,6 @@ public class ConsultaProduccionService {
         @SuppressWarnings("unchecked") // Cast is safe due to RowMapper
         List<ProduccionDataDTO> produccionDataList = (List<ProduccionDataDTO>) executionResult.get("p_registros");
 
-        // Return the list (will be null if no data found or error occurs - handle as needed)
         return produccionDataList;
     }
 }

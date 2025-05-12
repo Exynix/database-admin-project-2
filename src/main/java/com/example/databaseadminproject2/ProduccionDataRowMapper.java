@@ -19,7 +19,7 @@ public class ProduccionDataRowMapper implements RowMapper<ProduccionDataDTO> {
                 rs.getDouble("COP_VENTAS"),
                 rs.getLong("PRODUCTOID_PRODUCTO"),
                 rs.getLong("REGIONID"),
-                rs.getLong("periodoid") // <-- CORRECTED: Use lowercase 'i' to match the Oracle SELECT
+                rs.getLong("periodoid")
         );
     }
 }
